@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   // Update these URLs to match your actual site structure
-  const baseUrl = 'https://usman-shehzad.vercel.app/';
+  const baseUrl = 'https://usman-shehzad.vercel.app';
   const urls = [
     '',
     '/projects',

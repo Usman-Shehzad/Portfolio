@@ -25,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="_zZHAOBJcpHtWpBg5Y4SBt559fcpKEu2OI_t-x1dxnc" />
         <link rel="icon" type="image/png" href="/favico.png" />
       </head>
       <body

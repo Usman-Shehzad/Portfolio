@@ -152,9 +152,75 @@ export default function Home() {
   
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-[#0f2027] to-[#2c5364] font-mono text-zinc-100">
+    <div className="relative min-h-screen bg-gradient-to-br from-black via-[#0f2027] to-[#2c5364] font-mono text-zinc-100 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 -z-0">
+        <motion.div
+          className="absolute -top-24 -left-20 h-72 w-72 rounded-full blur-3xl opacity-40"
+          style={{ background: "radial-gradient(circle, #1e3a8a 0%, transparent 72%)" }}
+          animate={{
+            x: [0, 140, -40, 0],
+            y: [0, 80, 160, 0],
+            scale: [1, 1.2, 0.95, 1],
+            filter: [
+              "hue-rotate(0deg)",
+              "hue-rotate(60deg)",
+              "hue-rotate(120deg)",
+              "hue-rotate(0deg)"
+            ]
+          }}
+          transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute top-32 right-10 h-80 w-80 rounded-full blur-3xl opacity-35"
+          style={{ background: "radial-gradient(circle, #1e3a8a 0%, transparent 74%)" }}
+          animate={{
+            x: [0, -120, 60, 0],
+            y: [0, 140, -40, 0],
+            scale: [1, 0.9, 1.15, 1],
+            filter: [
+              "hue-rotate(0deg)",
+              "hue-rotate(90deg)",
+              "hue-rotate(180deg)",
+              "hue-rotate(0deg)"
+            ]
+          }}
+          transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-1/3 h-64 w-64 rounded-full blur-3xl opacity-30"
+          style={{ background: "radial-gradient(circle, #1e3a8a 0%, transparent 74%)" }}
+          animate={{
+            x: [0, -90, 70, 0],
+            y: [0, -60, 110, 0],
+            scale: [1, 1.15, 0.9, 1],
+            filter: [
+              "hue-rotate(0deg)",
+              "hue-rotate(80deg)",
+              "hue-rotate(160deg)",
+              "hue-rotate(0deg)"
+            ]
+          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute -bottom-32 left-1/3 h-96 w-96 rounded-full blur-[90px] opacity-30"
+          style={{ background: "radial-gradient(circle, #1e3a8a 0%, transparent 72%)" }}
+          animate={{
+            x: [0, 100, -80, 0],
+            y: [0, -120, 40, 0],
+            scale: [1, 1.1, 0.9, 1],
+            filter: [
+              "hue-rotate(0deg)",
+              "hue-rotate(70deg)",
+              "hue-rotate(140deg)",
+              "hue-rotate(0deg)"
+            ]
+          }}
+          transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
       <Header />
-      <main className="flex flex-col items-center justify-center min-h-screen px-4 py-12 pt-0">
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-12 pt-0">
         <section className="flex flex-col items-center  justify-center w-full max-w-4xl mx-auto mt-20 mb-8">
           <motion.span
             className="mb-5 px-4 py-4 rounded-full bg-cyan-900/20 border border-cyan-900/30 text-cyan-300 font-semibold tracking-widest text-sm md:text-md shadow-sm flex items-center gap-3 relative"
@@ -228,8 +294,9 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.9 }}
           >
             <a
-              href="/resume.pdf"
-              download
+              href="/Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-3 rounded-full text-cyan-400 font-bold shadow-lg hover:scale-105 transition text-center border-2 border-cyan-500 bg-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-700 hover:text-white"
             >
               Download Resume
@@ -241,6 +308,7 @@ export default function Home() {
               Explore Projects
             </a>
           </motion.div>
+          
         </section>
 
         <AnimatePresence>

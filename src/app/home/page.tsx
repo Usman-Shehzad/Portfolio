@@ -8,6 +8,7 @@ import EducationTimeline from "../../components/EducationTimeline";
 import Projects from "../../components/Projects";
 import Certifications from "../../components/Certifications";
 import ContactUs from "../../components/ContactUs";
+import Footer from "../../components/Footer";
 
 export default function Home() {
   const expertiseRef = useRef<HTMLDivElement>(null);
@@ -427,6 +428,7 @@ export default function Home() {
         <Certifications />
         
         <ContactUs />
+        <Footer />
       </main>
       {/* Tailwind handles all navbar styling now */}
     </div>

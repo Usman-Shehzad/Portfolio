@@ -9,6 +9,8 @@ import Projects from "../../components/Projects";
 import Certifications from "../../components/Certifications";
 import ContactUs from "../../components/ContactUs";
 import Footer from "../../components/Footer";
+import TypeWriter from "../../components/cyber/TypeWriter";
+import DecryptText from "../../components/cyber/DecryptText";
 
 export default function Home() {
   const expertiseRef = useRef<HTMLDivElement>(null);
@@ -72,6 +74,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: i * 0.18 + 0.2 }}
           >
             <WhatIBuildCard
+              index={i}
               title={card.title}
               desc={card.desc}
               tags={card.tags}
@@ -153,135 +156,67 @@ export default function Home() {
   
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-black via-[#0f2027] to-[#2c5364] font-mono text-zinc-100 overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-0">
-        <motion.div
-          className="absolute -top-24 -left-20 h-72 w-72 rounded-full blur-3xl opacity-40"
-          style={{ background: "radial-gradient(circle, #1e3a8a 0%, transparent 72%)" }}
-          animate={{
-            x: [0, 140, -40, 0],
-            y: [0, 80, 160, 0],
-            scale: [1, 1.2, 0.95, 1],
-            filter: [
-              "hue-rotate(0deg)",
-              "hue-rotate(60deg)",
-              "hue-rotate(120deg)",
-              "hue-rotate(0deg)"
-            ]
-          }}
-          transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute top-32 right-10 h-80 w-80 rounded-full blur-3xl opacity-35"
-          style={{ background: "radial-gradient(circle, #1e3a8a 0%, transparent 74%)" }}
-          animate={{
-            x: [0, -120, 60, 0],
-            y: [0, 140, -40, 0],
-            scale: [1, 0.9, 1.15, 1],
-            filter: [
-              "hue-rotate(0deg)",
-              "hue-rotate(90deg)",
-              "hue-rotate(180deg)",
-              "hue-rotate(0deg)"
-            ]
-          }}
-          transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-1/3 h-64 w-64 rounded-full blur-3xl opacity-30"
-          style={{ background: "radial-gradient(circle, #1e3a8a 0%, transparent 74%)" }}
-          animate={{
-            x: [0, -90, 70, 0],
-            y: [0, -60, 110, 0],
-            scale: [1, 1.15, 0.9, 1],
-            filter: [
-              "hue-rotate(0deg)",
-              "hue-rotate(80deg)",
-              "hue-rotate(160deg)",
-              "hue-rotate(0deg)"
-            ]
-          }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute -bottom-32 left-1/3 h-96 w-96 rounded-full blur-[90px] opacity-30"
-          style={{ background: "radial-gradient(circle, #1e3a8a 0%, transparent 72%)" }}
-          animate={{
-            x: [0, 100, -80, 0],
-            y: [0, -120, 40, 0],
-            scale: [1, 1.1, 0.9, 1],
-            filter: [
-              "hue-rotate(0deg)",
-              "hue-rotate(70deg)",
-              "hue-rotate(140deg)",
-              "hue-rotate(0deg)"
-            ]
-          }}
-          transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
+    <div className="relative min-h-screen font-sans text-zinc-100 overflow-hidden">
       <Header />
       <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-12 pt-0">
-        <section className="flex flex-col items-center  justify-center w-full max-w-4xl mx-auto mt-20 mb-8">
+        <section className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto mt-20 mb-8">
           <motion.span
-            className="mb-5 px-4 py-4 rounded-full bg-cyan-900/20 border border-cyan-900/30 text-cyan-300 font-semibold tracking-widest text-sm md:text-md shadow-sm flex items-center gap-3 relative"
+            className="mb-6 px-4 py-2 rounded-full bg-cyan-900/20 border border-cyan-500/30 text-cyan-300 font-mono font-semibold tracking-widest text-xs md:text-sm shadow-sm flex items-center gap-3 relative"
             style={{ letterSpacing: '0.08em', minWidth: 'fit-content' }}
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            {/* Left animated circle */}
-            <span className="w-4 h-4 rounded-full bg-gradient-to-br from-cyan-700 to-cyan-400 flex items-center justify-center relative">
+            <span className="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-cyan-700 to-cyan-400 flex items-center justify-center relative">
               <span className="absolute w-full h-full rounded-full animate-ping bg-cyan-400/40" style={{ animationDuration: '1.5s' }}></span>
-              <span className="w-2 h-2 rounded-full bg-cyan-300 block"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 block"></span>
             </span>
-            <span className="z-10">Open to Collaboration</span>
-            {/* Right clock icon */}
-            <svg className=" w-5 h-5 text-cyan-300 opacity-80" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
-              <path d="M12 7v5l3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className="z-10">SYSTEM ONLINE — OPEN TO COLLABORATION</span>
           </motion.span>
-          <motion.h1
-            className="text-7xl md:text-8xl font-extrabold tracking-tight text-center mb-4 bg-clip-text text-transparent"
+
+          {/* Terminal window */}
+          <motion.div
+            className="w-full max-w-2xl cyber-panel mb-8 overflow-hidden"
+            initial={{ opacity: 0, y: 24, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          >
+            {/* title bar */}
+            <div className="flex items-center gap-2 px-4 py-2.5 border-b border-cyan-500/15 bg-black/30">
+              <span className="w-3 h-3 rounded-full bg-red-400/80" />
+              <span className="w-3 h-3 rounded-full bg-yellow-400/80" />
+              <span className="w-3 h-3 rounded-full bg-emerald-400/80" />
+              <span className="ml-3 text-xs text-zinc-400 font-mono">usman@cybersec: ~/portfolio</span>
+            </div>
+            {/* body */}
+            <div className="px-5 py-5 font-mono text-sm md:text-base text-left">
+              <TypeWriter
+                className="text-emerald-300/90 space-y-1 leading-relaxed"
+                lines={[
+                  "$ whoami",
+                  "> Usman Shehzad",
+                  "$ cat role.txt",
+                  "> Cybersecurity Analyst x Security Engineer",
+                ]}
+                speed={38}
+              />
+            </div>
+          </motion.div>
+
+          <h1 className="sr-only">Usman Shehzad — Cybersecurity Analyst and Security Engineer</h1>
+
+          <motion.div
+            className="text-5xl md:text-7xl font-extrabold tracking-tight text-center mb-4 text-gradient text-glow font-mono"
             initial={{ opacity: 0, scale: 0.9 }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              backgroundImage: [
-                "linear-gradient(90deg, #22d3ee 0%, #34d399 25%, #3b82f6 50%, #22d3ee 75%, #34d399 100%)",
-                "linear-gradient(180deg, #34d399 0%, #3b82f6 25%, #22d3ee 50%, #34d399 75%, #3b82f6 100%)",
-                "linear-gradient(270deg, #3b82f6 0%, #22d3ee 25%, #34d399 50%, #3b82f6 75%, #22d3ee 100%)",
-                "linear-gradient(360deg, #22d3ee 0%, #3b82f6 25%, #34d399 50%, #22d3ee 75%, #3b82f6 100%)",
-                "linear-gradient(90deg, #22d3ee 0%, #34d399 25%, #3b82f6 50%, #22d3ee 75%, #34d399 100%)"
-              ]
-            }}
-            transition={{
-              opacity: { duration: 0.6 },
-              scale: { duration: 0.6 },
-              backgroundImage: {
-                duration: 8,
-                repeat: Infinity,
-                ease: "linear"
-              }
-            }}
-            style={{
-              backgroundSize: "200% 200%",
-              filter: "drop-shadow(0 0 30px rgba(34, 211, 238, 0.6)) drop-shadow(0 0 60px rgba(34, 211, 238, 0.4)) drop-shadow(0 0 90px rgba(34, 211, 238, 0.2))"
-            }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            aria-hidden="true"
           >
-            Usman Shehzad
-          </motion.h1>
-          <motion.h2
-            className="text-2xl md:text-3xl font-bold text-cyan-400 text-center mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-          >
-            Cybersecurity Analyst x Security Engineer
-          </motion.h2>
+            <DecryptText text="Usman Shehzad" onView={false} speed={45} />
+          </motion.div>
+
           <motion.p
-            className="max-w-2xl text-md md:text-lg text-zinc-300 text-center mb-8"
+            className="max-w-2xl text-md md:text-lg text-zinc-300 text-center mb-8 font-sans"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
@@ -295,7 +230,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.9 }}
           >
             <a
-              href="/Resume.pdf"
+              href="/Usman_Shehzad.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 rounded-full text-cyan-400 font-bold shadow-lg hover:scale-105 transition text-center border-2 border-cyan-500 bg-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-700 hover:text-white"
@@ -411,12 +346,11 @@ export default function Home() {
               CORE CAPABILITIES
             </span>
           </div>
-          <h2
-            className="text-5xl md:text-6xl font-extrabold text-center mb-4 tracking-tight drop-shadow-lg bg-gradient-to-r from-cyan-400 via-emerald-400 to-blue-500 bg-clip-text text-transparent"
-            style={{ textShadow: '0 0 24px #22d3eecc', letterSpacing: '-0.03em' }}
-          >
-            What I Build
-          </h2>
+          <DecryptText
+            as="h2"
+            text="What I Build"
+            className="text-5xl md:text-6xl font-extrabold text-center mb-4 tracking-tight drop-shadow-lg text-gradient text-glow"
+          />
           <p className="text-lg md:text-xl text-zinc-300 text-center mb-12 max-w-2xl">Specialized expertise across security, scripting/automation, and modern application development</p>
           <WhatIBuildCards />
            {/* education timeline inserted */}

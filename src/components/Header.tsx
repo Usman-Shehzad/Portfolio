@@ -3,10 +3,12 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTheme } from "./cyber/ThemeContext";
 
 export default function Header() {
   const navbarRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,8 +48,8 @@ export default function Header() {
           height={48}
           className="rounded-full"
         />
-        <span className="relative text-2xl font-bold text-cyan-400 tracking-wide">
-          Usman Shehzad
+        <span className="relative text-2xl font-bold font-mono text-cyan-400 tracking-wide cursor-blink">
+          <span className="text-emerald-400/80">~/</span>Usman Shehzad
         </span>
       </Link>
 
@@ -74,13 +76,28 @@ export default function Header() {
         })}
       </nav>
 
-      {/* CTA Button */}
-      <Link
-        href="/contact"
-        className="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-700 text-white font-bold shadow-lg hover:scale-105 transition"
-      >
-        Let's Talk
-      </Link>
+      {/* Theme toggle + CTA */}
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label="Switch theme"
+          title={theme === "terminal" ? "Switch to HUD mode" : "Switch to Terminal mode"}
+          className="flex items-center gap-2 px-3 py-2 rounded-full border border-cyan-500/30 text-cyan-300 font-mono text-xs font-semibold hover:border-cyan-400/70 hover:text-cyan-200 hover:bg-cyan-900/20 transition"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-60 animate-ping" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
+          </span>
+          {theme === "terminal" ? "TERMINAL" : "HUD"}
+        </button>
+        <Link
+          href="/contact"
+          className="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-700 text-white font-bold shadow-lg hover:scale-105 transition"
+        >
+          Let&apos;s Talk
+        </Link>
+      </div>
     </header>
   );
 }
